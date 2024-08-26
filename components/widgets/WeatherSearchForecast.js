@@ -34,7 +34,6 @@ export const WeatherSearchForecast = () => {
             const weatherData = await WeatherService.getWeatherData(latitude, longitude);
 
             setWeatherData(weatherData);
-            router.push(`/?city=${cityName}`);
         } catch (error) {
             toast({
                 title: 'Error',
@@ -52,6 +51,7 @@ export const WeatherSearchForecast = () => {
         e.preventDefault();
         if (city) {
             fetchWeatherData(city);
+            router.push(`/?city=${city}`);
         }
     };
 
