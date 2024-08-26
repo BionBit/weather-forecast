@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { Box, VStack, Input, Button, useToast } from '@chakra-ui/react';
-import Head from 'next/head';
 
 import {WeatherChart} from '../../components/charts/WeatherForecast';
 import {WeatherService} from '../../services/weather-service';
@@ -58,12 +57,6 @@ export const WeatherSearchForecast = () => {
 
     return (
         <Box minHeight="100vh" display="flex" alignItems="center" justifyContent="center">
-            <Head>
-                <title>Weather Forecast</title>
-                <meta name="description" content="Weather forecast application" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
             <VStack spacing={4} width="100%" maxWidth="600px">
                 <form onSubmit={handleSubmit} style={{ width: '100%' }}>
                     <Input
