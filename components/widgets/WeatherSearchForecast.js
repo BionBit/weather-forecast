@@ -7,17 +7,17 @@ import {WeatherService} from '../../services/weather-service';
 import {useDeepCompareEffect} from '../../utils/hooks';
 
 export const WeatherSearchForecast = () => {
-    const [city, setCity] = useState('');
+    const [cityName, setCityName] = useState('');
     const [weatherData, setWeatherData] = useState(null);
     const [loading, setLoading] = useState(false);
     const router = useRouter();
     const toast = useToast();
   
     useDeepCompareEffect(() => {
-        const { city } = router.query;
-        if (city) {
-            setCity(city);
-            fetchWeatherData(city);
+        const { cityName } = router.query;
+        if (cityName) {
+            setCityName(cityName);
+            fetchWeatherData(cityName);
         }
     }, [router.query]);
 
@@ -49,9 +49,9 @@ export const WeatherSearchForecast = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (city) {
-            fetchWeatherData(city);
-            router.push(`/?city=${city}`);
+        if (cityName) {
+            fetchWeatherData(cityName);
+            router.push(`/?cityName=${cityName}`);
         }
     };
 
@@ -60,8 +60,8 @@ export const WeatherSearchForecast = () => {
             <VStack spacing={4} width="100%" maxWidth="600px">
                 <form onSubmit={handleSubmit} style={{ width: '100%' }}>
                     <Input
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}
+                        value={cityName}
+                        onChange={(e) => setCityName(e.target.value)}
                         placeholder="Enter city name"
                         size="lg"
                     />
